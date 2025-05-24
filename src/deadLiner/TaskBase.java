@@ -11,13 +11,29 @@ import java.util.Date;
  * @author USER
  */
 abstract class TaskBase{
-    String  title;
-    Date dueDate;
-    int priority;
-    String status;
-    INotifiable assignee ;
+   private String  title;
+    private Date dueDate;
+    private int priority;
+   private String status;
+    private INotifiable assignee ;
 
-    public TaskBase(String title, Date dueDate, int priority, String status,INotifiable assignee  ){
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public TaskBase(String title, Date dueDate, int priority, String status, INotifiable assignee  ){
         this.title=title;
         this.dueDate=dueDate;
         this.status=status;
