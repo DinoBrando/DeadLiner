@@ -18,14 +18,14 @@ public class Lecturer extends User{
         this.createdTask.add(new Task(title, dueDate, section));
     }
     
-    public void reviewAssignment(Task task, String newStatus, Double grade){
+    public void gradeAssignment(Task task, String newStatus, Double grade){//accepted
         if(createdTask.contains(task)){
             task.updateStatus(newStatus);
             task.setGrade(grade);
         }
     }
 
-    public void reviewAssignment(Task task, String newStatus){
+    public void rejectAssignment(Task task, String newStatus){//rejected
         if(createdTask.contains(task)){
             task.updateStatus(newStatus);
         }
