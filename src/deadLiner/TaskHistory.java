@@ -1,15 +1,18 @@
 package deadLiner;
+
 import java.util.Date;
+
 public class TaskHistory {
- private    Date timestamp;
- private   String description;
+    private Date timestamp;
+    private String description;
 
     public TaskHistory(Date timestamp, String description){
-        this.description=description;
-        this.timestamp=timestamp;
+        this.timestamp = timestamp;
+        this.description = description;
     }
+
     public String getDetails(){
-        return timestamp+description;
+        return description;
     }
 
     public Date getTimestamp() { 
@@ -18,10 +21,6 @@ public class TaskHistory {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {

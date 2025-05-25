@@ -1,36 +1,49 @@
 package deadLiner;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lecturer extends User{
     List<Task> createdTask;
-    List<CourseSection>taughSections;
+    List<CourseSection>taughtSections;
 
-    public Lecturer(String id, String name, List<Task> createdTask, List<CourseSection> taughSections) {
+    public Lecturer(String id, String name) {
         super(id, name);
-        this.createdTask = createdTask;
-        this.taughSections = taughSections;
+        this.createdTask = new ArrayList<>();
+        this.taughtSections = new ArrayList<>();
     }
 
+    public void createAssignment(String title, Date dueDate, CourseSection section){
+        this.createdTask.add(new Task(title, dueDate, section));
+    }
+    
+    public void reviewAssignment(Task task, String newStatus, Double grade){
+        if(createdTask.contains(task)){
+            task.updateStatus(newStatus);
+            task.setGrade(grade);
+        }
+    }
+
+    public void reviewAssignment(Task task, String newStatus){
+        if(createdTask.contains(task)){
+            task.updateStatus(newStatus);
+        }
+    }
+
+    public List<CourseSection> getTaughtSections() {
+        return taughtSections;
+    }
+    
     public List<Task> getCreatedTask() {
         return createdTask;
     }
 
-    public void setCreatedTask(List<Task> createdTask) {
-        this.createdTask = createdTask;
+    public void addTaughtSection(CourseSection section){
+        this.taughtSections.add(section);
     }
 
-    public List<CourseSection> getTaughSections() {
-        return taughSections;
-    }
-
-    public void setTaughSections(List<CourseSection> taughSections) {
-        this.taughSections = taughSections;
-    }
-    public void addTaughSection(CourseSection section){
-        addTaughSection(section);
-    }
-    public void removeTaughSection(CourseSection section){
-        removeTaughSection(section);
+    public void removeTaughtSection(CourseSection section){
+        this.taughtSections.remove(section);
     }
 }

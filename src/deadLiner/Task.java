@@ -1,8 +1,8 @@
 package deadLiner;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
 
 public class Task {
     private String title;
@@ -45,11 +45,15 @@ public class Task {
         this.priority = priority;
     }
 
+    public void markComplete(){
+        this.status = "Selesai";
+    }
+
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void updateStatus(String status) {
         this.status = status;
     }
 
@@ -84,7 +88,7 @@ public class Task {
         }
     }
 
-    public List<TaskHistory>getHistory(){
+    public List<TaskHistory> getHistory(){
         return history;
     }
 

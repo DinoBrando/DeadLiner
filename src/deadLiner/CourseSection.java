@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseSection {
-    private String idenrifier;
+    private String identifier;
     private Course course;
     private Lecturer instructor;
     private List<Student> enrolledStudent;
 
-    public CourseSection(String idenrifier, Course course, Lecturer instructor) {
-        this.idenrifier = idenrifier;
+    public CourseSection(String identifier, Course course, Lecturer instructor) {
+        this.identifier = identifier;
         this.course = course;
         this.instructor = instructor;
         this.enrolledStudent = new ArrayList<>();
     }
 
-    public String getIdenrifier() {
-        return idenrifier;
+    public String getIdentifier() {
+        return identifier;
     }
 
-    public void setIdenrifier(String idenrifier) {
-        this.idenrifier = idenrifier;
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
     public Course getCourse() {
@@ -45,12 +45,10 @@ public class CourseSection {
     }
 
     public void addStudent(Student student) {
-        if (student != null) {
-            enrolledStudent.add(student);
-        }
+        enrolledStudent.add(student);
     }
 
-    public void removedStudent(Student student) {
+    public void removeStudent(Student student) {
         enrolledStudent.remove(student);
     }
 }
