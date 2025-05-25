@@ -8,8 +8,8 @@ public class Student extends User {
     List<CourseSection> enrolledSections;
     int preferredReminderTime;
 
-    public Student(List<Task> assignedTasks, List<CourseSection> enrolledSections, Double grade, String id, String name) {
-        super(id, name);
+    public Student(String name) {
+        super(name);
         this.assignedTasks = new ArrayList<>();
         this.enrolledSections = new ArrayList<>();
         this.preferredReminderTime = 24;

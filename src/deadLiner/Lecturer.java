@@ -8,8 +8,8 @@ public class Lecturer extends User{
     List<Task> createdTask;
     List<CourseSection>taughtSections;
 
-    public Lecturer(String id, String name) {
-        super(id, name);
+    public Lecturer(String name) {
+        super(name);
         this.createdTask = new ArrayList<>();
         this.taughtSections = new ArrayList<>();
     }
