@@ -4,6 +4,8 @@
  */
 package deadLiner;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hp 15
@@ -128,7 +130,11 @@ public class MainLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+                int selectedRow = jTable1.getSelectedRow();
+                if (selectedRow==-1){
+                   JOptionPane.showMessageDialog(null,"Pilihlah tugas yang ingin di edit.");
+                   return;
+                }
     }//GEN-LAST:event_btnEditActionPerformed
 
     /**
