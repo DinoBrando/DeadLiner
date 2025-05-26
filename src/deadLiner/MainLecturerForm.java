@@ -36,7 +36,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         tblTask = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTasks = new javax.swing.JTable();
         btnTambah = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +65,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTasks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,7 +76,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
                 "Judul Tugas", "Mata Kuliah", "Deadline", "Status"
             }
         ));
-        tblTask.setViewportView(jTable1);
+        tblTask.setViewportView(tblTasks);
 
         btnTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnTambah.setText("TAMBAH");
@@ -146,7 +146,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-                int selectedRow = jTable1.getSelectedRow();
+                int selectedRow = tblTasks.getSelectedRow();
                 if (selectedRow==-1){
                    JOptionPane.showMessageDialog(null,"Pilihlah tugas yang ingin di edit.");
                    return;
@@ -200,8 +200,8 @@ public class MainLecturerForm extends javax.swing.JFrame {
     private javax.swing.JButton btnTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNama;
     private javax.swing.JScrollPane tblTask;
+    private javax.swing.JTable tblTasks;
     // End of variables declaration//GEN-END:variables
 }

@@ -138,7 +138,8 @@ public class LoginScreen extends javax.swing.JFrame {
         }
         
         UserSession.currentLecturer.setName(name);
-        new MainLecturerForm().setVisible(true);
+        MainLecturerForm LForm = new MainLecturerForm();
+        LForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnDosenActionPerformed
 

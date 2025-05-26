@@ -30,7 +30,7 @@ public class MainStudentForm extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         tblTask = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTasks = new javax.swing.JTable();
         btnLogout = new javax.swing.JButton();
         btnPriority = new javax.swing.JButton();
         lblNama = new javax.swing.JLabel();
@@ -45,7 +45,7 @@ public class MainStudentForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("DASHBOARD MAHASISWA");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTasks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -56,7 +56,7 @@ public class MainStudentForm extends javax.swing.JFrame {
                 "Judul Tugas", "Mata Kuliah", "Deadline", "Status", "Prioritas", "Nilai"
             }
         ));
-        tblTask.setViewportView(jTable1);
+        tblTask.setViewportView(tblTasks);
 
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogout.setText("LOGOUT");
@@ -203,9 +203,9 @@ public class MainStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNama;
     private javax.swing.JSpinner spnTime;
     private javax.swing.JScrollPane tblTask;
+    private javax.swing.JTable tblTasks;
     // End of variables declaration//GEN-END:variables
 }
