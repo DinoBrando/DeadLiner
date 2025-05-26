@@ -37,6 +37,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         tblTask = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnTambah = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,13 +78,26 @@ public class MainLecturerForm extends javax.swing.JFrame {
         ));
         tblTask.setViewportView(jTable1);
 
+        btnTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnTambah.setText("TAMBAH");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEdit)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEdit)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTambah)
+                        .addGap(8, 8, 8))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(249, 249, 249)
@@ -115,9 +129,11 @@ public class MainLecturerForm extends javax.swing.JFrame {
                     .addComponent(btnLogout))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(tblTask, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -136,6 +152,10 @@ public class MainLecturerForm extends javax.swing.JFrame {
                    return;
                 }
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        
+    }//GEN-LAST:event_btnTambahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +196,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTable jTable1;
