@@ -4,6 +4,7 @@
  */
 package deadLiner;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -161,7 +162,21 @@ public class MainStudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        // TODO add your handling code here:
+        int row = tblTasks.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblTasks.getModel();
+        
+        if(row<0){
+            JOptionPane.showMessageDialog(this, "No row is selected! Please select one row", "Select row",  JOptionPane.ERROR_MESSAGE);
+        }else{
+            String name = (String) model.getValueAt(row, 0);
+            if(UserSession.getTask(name)!= null){
+                int willEdit = UserSession.getTask(name);
+                UserSession.taskList.get(willEdit).markComplete();
+            }
+        }
+        
+        refreshTable();
+        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     public void refreshTable(){

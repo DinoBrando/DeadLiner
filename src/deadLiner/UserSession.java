@@ -10,6 +10,7 @@ public class UserSession {
     
     public static List<Task> taskList = new ArrayList<>();
     
+        
     public static String[] getTaskDetails(int x){
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
         String formattedDeadline = sdf.format(taskList.get(x).getDueDate());
@@ -20,6 +21,16 @@ public class UserSession {
     public static void addTask(Task task) {
         taskList.add(task);
     }
+    
+    public static Integer getTask(String name){
+        for(int i = 0;i<taskList.size();i++){
+            if(taskList.get(i).getTitle().equalsIgnoreCase(name)){
+                return i;
+            }
+        }
+            return null;
+    }
+        
 
     
 }
