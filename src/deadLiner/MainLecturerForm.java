@@ -154,7 +154,8 @@ public class MainLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        
+        AssignmentForm a = new AssignmentForm();
+        a.setVisible(true);
     }//GEN-LAST:event_btnTambahActionPerformed
 
     /**
