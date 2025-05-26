@@ -14,22 +14,22 @@ public class Lecturer extends User{
         this.taughtSections = new ArrayList<>();
     }
 
-    public void createAssignment(String title, Date dueDate, CourseSection section){
-        this.createdTask.add(new Task(title, dueDate, section));
-    }
+//    public void createAssignment(String title, Date dueDate, CourseSection section){
+//        this.createdTask.add(new Task(title, dueDate, section));
+//    }
     
-    public void gradeAssignment(Task task, String newStatus, Double grade){//accepted
-        if(createdTask.contains(task)){
-            task.updateStatus(newStatus);
-            task.setGrade(grade);
-        }
-    }
+//    public void gradeAssignment(Task task, String newStatus, Double grade){//accepted
+//        if(createdTask.contains(task)){
+//            task.updateStatus(newStatus);
+//            task.setGrade(grade);
+//        }
+//    }
 
-    public void rejectAssignment(Task task, String newStatus){//rejected
-        if(createdTask.contains(task)){
-            task.updateStatus(newStatus);
-        }
-    }
+//    public void rejectAssignment(Task task, String newStatus){//rejected
+//        if(createdTask.contains(task)){
+//            task.updateStatus(newStatus);
+//        }
+//    }
 
     public List<CourseSection> getTaughtSections() {
         return taughtSections;

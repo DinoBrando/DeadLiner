@@ -5,19 +5,29 @@ import java.util.Date;
 import java.util.List;
 
 public class Task {
+    public enum TaskStatus {
+        ASSIGNED,
+        SUBMITTED,
+        OVERDUE,
+        GRADED
+    }
+
     private String title;
     private Date dueDate;
     private int priority; //1-3
-    private String status;
     private Student asignee;
-    private CourseSection courseSection;
+    private TaskStatus status;
+    private String course; //temp
     private Double grade;
+    private String description;
     private List<TaskHistory> history;
-    
-    public Task(String title, Date dueDate, CourseSection courseSection) {
+        
+    public Task(String title, String course ,Date dueDate, String description) {
         this.title = title;
         this.dueDate = dueDate;
-        this.courseSection = courseSection;
+        this.course = course;
+        this.description = description;
+        this.status = TaskStatus.ASSIGNED;
         this.history = new ArrayList<>();
     }
 
@@ -46,14 +56,31 @@ public class Task {
     }
 
     public void markComplete(){
-        this.status = "Selesai";
+        this.status = TaskStatus.SUBMITTED;
     }
 
-    public String getStatus() {
-        return status;
+    public TaskStatus getStatus() {
+        return this.status;
+    }
+    
+    public String getStrStatus() {
+        switch (status) {
+            case TaskStatus.ASSIGNED ->{
+                return "Assigned";
+            }case TaskStatus.SUBMITTED -> {
+                return "Submitted";
+            }case TaskStatus.OVERDUE ->{
+                return "Overdue";
+            }case TaskStatus.GRADED ->{
+                return "Graded";
+            }default ->{
+                return null;
+            }
+        }
     }
 
-    public void updateStatus(String status) {
+
+    public void updateStatus(TaskStatus status) {
         this.status = status;
     }
 
@@ -65,20 +92,28 @@ public class Task {
         this.asignee = asignee;
     }
 
-    public CourseSection getCourseSection() {
-        return courseSection;
+    public String getCourse() {
+        return this.course;
     }
 
-    public void setCourseSection(CourseSection courseSection) {
-        this.courseSection = courseSection;
+    public void setCourse(String course) {
+        this.course = course;
     }
-
+    
     public Double getGrade() {
         return grade;
     }
 
     public void setGrade(Double grade) {
         this.grade = grade;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void addHistory(TaskHistory entry){

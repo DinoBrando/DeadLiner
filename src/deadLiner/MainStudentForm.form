@@ -35,7 +35,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="tblTask" min="-2" pref="634" max="-2" attributes="0"/>
+                      <Component id="scrollpane" min="-2" pref="634" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
                   <Component id="lblNama" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="tblTask" min="-2" pref="343" max="-2" attributes="0"/>
+              <Component id="scrollpane" min="-2" pref="343" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnPriority" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
         <Property name="text" type="java.lang.String" value="DASHBOARD MAHASISWA"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="tblTask">
+    <Container class="javax.swing.JScrollPane" name="scrollpane">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>

@@ -5,6 +5,7 @@
 package deadLiner;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +20,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         lblNama.setText(UserSession.currentLecturer.getName().toUpperCase());
+        refreshTable();
     }
 
     /**
@@ -35,7 +37,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
         lblNama = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        tblTask = new javax.swing.JScrollPane();
+        scrollpane = new javax.swing.JScrollPane();
         tblTasks = new javax.swing.JTable();
         btnTambah = new javax.swing.JButton();
 
@@ -76,7 +78,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
                 "Judul Tugas", "Mata Kuliah", "Deadline", "Status"
             }
         ));
-        tblTask.setViewportView(tblTasks);
+        scrollpane.setViewportView(tblTasks);
 
         btnTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnTambah.setText("TAMBAH");
@@ -107,7 +109,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(27, 27, 27)
-                            .addComponent(tblTask, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(38, 38, 38)
                             .addComponent(lblNama, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +130,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
                     .addComponent(lblNama, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLogout))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(tblTask, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,9 +157,24 @@ public class MainLecturerForm extends javax.swing.JFrame {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         AssignmentForm a = new AssignmentForm();
+        a.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e){
+                refreshTable();
+            }
+        });
         a.setVisible(true);
+        
     }//GEN-LAST:event_btnTambahActionPerformed
 
+    public void refreshTable(){
+        DefaultTableModel model = (DefaultTableModel) tblTasks.getModel();
+        model.setRowCount(0);
+        for(int i = 0;i<UserSession.taskList.size();i++){
+            model.addRow(UserSession.getTaskDetails(i));
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -201,7 +218,7 @@ public class MainLecturerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblNama;
-    private javax.swing.JScrollPane tblTask;
+    private javax.swing.JScrollPane scrollpane;
     private javax.swing.JTable tblTasks;
     // End of variables declaration//GEN-END:variables
 }

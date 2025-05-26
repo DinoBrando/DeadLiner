@@ -4,6 +4,8 @@
  */
 package deadLiner;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hp 15
@@ -17,6 +19,8 @@ public class MainStudentForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         lblNama.setText(UserSession.currentStudent.getName().toUpperCase());
+        spnTime.setValue(UserSession.currentStudent.getPreferredReminderTime());
+        refreshTable();
     }
 
     /**
@@ -29,7 +33,7 @@ public class MainStudentForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        tblTask = new javax.swing.JScrollPane();
+        scrollpane = new javax.swing.JScrollPane();
         tblTasks = new javax.swing.JTable();
         btnLogout = new javax.swing.JButton();
         btnPriority = new javax.swing.JButton();
@@ -56,7 +60,7 @@ public class MainStudentForm extends javax.swing.JFrame {
                 "Judul Tugas", "Mata Kuliah", "Deadline", "Status", "Prioritas", "Nilai"
             }
         ));
-        tblTask.setViewportView(tblTasks);
+        scrollpane.setViewportView(tblTasks);
 
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogout.setText("LOGOUT");
@@ -103,7 +107,7 @@ public class MainStudentForm extends javax.swing.JFrame {
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(tblTask, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(lblNama, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,7 +140,7 @@ public class MainStudentForm extends javax.swing.JFrame {
                     .addComponent(btnLogout)
                     .addComponent(lblNama, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addComponent(tblTask, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPriority, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,6 +164,14 @@ public class MainStudentForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSubmitActionPerformed
 
+    public void refreshTable(){
+        DefaultTableModel model = (DefaultTableModel) tblTasks.getModel();
+        model.setRowCount(0);
+        for(int i = 0;i<UserSession.taskList.size();i++){
+            model.addRow(UserSession.getTaskDetails(i));
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -204,8 +216,8 @@ public class MainStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblNama;
+    private javax.swing.JScrollPane scrollpane;
     private javax.swing.JSpinner spnTime;
-    private javax.swing.JScrollPane tblTask;
     private javax.swing.JTable tblTasks;
     // End of variables declaration//GEN-END:variables
 }
