@@ -72,7 +72,7 @@ public class MainStudentForm extends javax.swing.JFrame {
         });
 
         btnPriority.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPriority.setText("PRIORITAS");
+        btnPriority.setText("DETAILS");
 
         lblNama.setText("NAMA");
 
