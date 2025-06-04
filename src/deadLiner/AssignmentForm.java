@@ -6,6 +6,8 @@ package deadLiner;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -39,11 +41,15 @@ public class AssignmentForm extends javax.swing.JFrame {
         txtTitle = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnTugaskan = new javax.swing.JButton();
-        txtDate = new javax.swing.JTextField();
         txtMatkul = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        cbxBulan = new javax.swing.JComboBox<>();
+        txtTanggal = new javax.swing.JTextField();
+        txtJam = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtMenit = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,17 +76,7 @@ public class AssignmentForm extends javax.swing.JFrame {
             }
         });
 
-        txtDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDate.setText("yyyy-MM-dd");
-        txtDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateActionPerformed(evt);
-            }
-        });
-
         txtMatkul.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMatkul.setMinimumSize(new java.awt.Dimension(64, 26));
-        txtMatkul.setPreferredSize(new java.awt.Dimension(64, 26));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Mata Kuliah:");
@@ -90,6 +86,17 @@ public class AssignmentForm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Deskripsi");
+
+        cbxBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+
+        txtTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTanggalActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText(":");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,10 +121,19 @@ public class AssignmentForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                        .addComponent(txtDate)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxBulan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(txtJam, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,11 +148,15 @@ public class AssignmentForm extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(txtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                    .addComponent(cbxBulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtJam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMenit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
@@ -155,34 +175,37 @@ public class AssignmentForm extends javax.swing.JFrame {
     private void btnTugaskanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTugaskanActionPerformed
        String judul = txtTitle.getText().trim();
        String matkul = txtMatkul.getText().trim();
-       String strDeadline = txtDate.getText().trim();
+       int blnDeadline;
+       int tglDeadline;
+       int jam;
+       int menit;
+       try {
+       blnDeadline = cbxBulan.getSelectedIndex() + 1;
+       tglDeadline = Integer.parseInt(txtTanggal.getText().trim());
+       jam = Integer.parseInt(txtJam.getText());
+       menit = Integer.parseInt(txtMenit.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Format tanggal salah!");
+            return;
+        }
        String deskripsi = txtDescription.getText().trim();
        
-       
-       Date deadline = null;
        if (judul.isEmpty() || deskripsi.isEmpty()){
            JOptionPane.showMessageDialog(this, "Judul dan Deskripsi harap di isi!");
            return;
        }
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            sdf.setLenient(false);
-            deadline = sdf.parse(strDeadline);
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(this, "Format tanggal salah! Gunakan format yyyy-MM-dd");
-            return;
-        }
+            LocalDateTime dateDeadline = LocalDateTime.of(2025, blnDeadline, tglDeadline, jam, menit);
+            UserSession.addTask(new Task(judul, matkul, dateDeadline, deskripsi));
         
-        UserSession.addTask(new Task(judul, matkul, deadline, deskripsi));
         
         this.dispose();
 
 
     }//GEN-LAST:event_btnTugaskanActionPerformed
 
-    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
-
-    }//GEN-LAST:event_txtDateActionPerformed
+    private void txtTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTanggalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTanggalActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -220,14 +243,18 @@ public class AssignmentForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTugaskan;
+    private javax.swing.JComboBox<String> cbxBulan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtDate;
     private javax.swing.JTextArea txtDescription;
+    private javax.swing.JTextField txtJam;
     private javax.swing.JTextField txtMatkul;
+    private javax.swing.JTextField txtMenit;
+    private javax.swing.JTextField txtTanggal;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 }

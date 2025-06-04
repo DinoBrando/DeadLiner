@@ -28,7 +28,7 @@
               <Component id="btnTugaskan" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -48,10 +48,19 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtMatkul" min="-2" pref="429" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" pref="429" max="32767" attributes="0"/>
-                      <Component id="txtDate" alignment="1" max="32767" attributes="0"/>
-                      <Component id="txtTitle" alignment="0" min="-2" pref="268" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="429" max="-2" attributes="0"/>
+                  <Component id="txtTitle" alignment="0" min="-2" pref="268" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtTanggal" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="cbxBulan" min="-2" pref="98" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                      <Component id="txtJam" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtMenit" min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="79" max="32767" attributes="0"/>
@@ -73,12 +82,16 @@
                   </Group>
                   <Component id="txtTitle" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxBulan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTanggal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtJam" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMenit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="138" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -138,17 +151,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTugaskanActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDate">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="yyyy-MM-dd"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDateActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtMatkul">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -179,6 +181,46 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Deskripsi"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxBulan">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="12">
+            <StringItem index="0" value="Januari"/>
+            <StringItem index="1" value="Februari"/>
+            <StringItem index="2" value="Maret"/>
+            <StringItem index="3" value="April"/>
+            <StringItem index="4" value="Mei"/>
+            <StringItem index="5" value="Juni"/>
+            <StringItem index="6" value="Juli"/>
+            <StringItem index="7" value="Agustus"/>
+            <StringItem index="8" value="September"/>
+            <StringItem index="9" value="Oktober"/>
+            <StringItem index="10" value="November"/>
+            <StringItem index="11" value="Desember"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTanggal">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTanggalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtJam">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value=":"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMenit">
     </Component>
   </SubComponents>
 </Form>

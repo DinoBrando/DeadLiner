@@ -1,8 +1,10 @@
 package deadLiner;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.time.ZoneId;
 
 public class Task {
     public enum TaskStatus {
@@ -13,7 +15,7 @@ public class Task {
     }
 
     private String title;
-    private Date dueDate;
+    private LocalDateTime dueDate;
     private int priority; //1-3
     private Student asignee;
     private TaskStatus status;
@@ -22,13 +24,18 @@ public class Task {
     private String description;
     private List<TaskHistory> history;
         
-    public Task(String title, String course ,Date dueDate, String description) {
+    public Task(String title, String course ,LocalDateTime dueDate, String description) {
         this.title = title;
         this.dueDate = dueDate;
         this.course = course;
         this.description = description;
         this.status = TaskStatus.ASSIGNED;
         this.history = new ArrayList<>();
+        
+        Date deadlineDate = Date.from(dueDate.atZone(ZoneId.systemDefault()).toInstant());
+        long delay = deadlineDate.getTime() - System.currentTimeMillis();
+
+
     }
 
     public String getTitle() {
@@ -39,11 +46,11 @@ public class Task {
         this.title = title;
     }
 
-    public Date getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -78,7 +85,6 @@ public class Task {
             }
         }
     }
-
 
     public void updateStatus(TaskStatus status) {
         this.status = status;
