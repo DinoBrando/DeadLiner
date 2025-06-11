@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Task {
     public enum TaskStatus {
@@ -32,11 +37,38 @@ public class Task {
         this.status = TaskStatus.ASSIGNED;
         this.history = new ArrayList<>();
         
-        Date deadlineDate = Date.from(dueDate.atZone(ZoneId.systemDefault()).toInstant());
-        long delay = deadlineDate.getTime() - System.currentTimeMillis();
-
-
+        LocalDateTime deadlineTime = this.dueDate;
+        long delay;
+        try {
+            // Attach system time zone
+            ZonedDateTime zonedDeadline = deadlineTime.atZone(ZoneId.systemDefault());
+            long deadlineMillis = zonedDeadline.toInstant().toEpochMilli();
+            delay = deadlineMillis - System.currentTimeMillis();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error with time zone: " + e.getMessage());
+            return;
+        }
+        
+        if (delay > 0) {
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    String notif = "Tugas " + title + " Telah Mencapai Deadline!";
+                    SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(
+                        null,
+                        notif,
+                        "Deadline Notification",
+                        JOptionPane.INFORMATION_MESSAGE
+                    ));
+                }
+            }, delay);
+            System.out.println("Timer set, waiting for deadline...");
+        } else {
+            JOptionPane.showMessageDialog(null, "Deadline is in the past!");
+        }
     }
+
 
     public String getTitle() {
         return title;
