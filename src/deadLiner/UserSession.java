@@ -20,6 +20,12 @@ public class UserSession {
         return new String[] {taskList.get(x).getTitle(), taskList.get(x).getCourse(), formatted, taskList.get(x).getStrStatus()};
     }
     
+    public static void setTaskDetails(int x, String t, String c, String d){
+        taskList.get(x).setTitle(t);
+        taskList.get(x).setCourse(c);
+        taskList.get(x).setDescription(d);
+    }
+    
     public static void addTask(Task task) {
         taskList.add(task);
     }

@@ -1,11 +1,10 @@
 package deadLiner;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -21,26 +20,25 @@ public class Task {
 
     private String title;
     private LocalDateTime dueDate;
-    private int priority; //1-3
+    private int priority; // 1-3
     private Student asignee;
     private TaskStatus status;
-    private String course; //temp
+    private String course; // temp
     private Double grade;
     private String description;
     private List<TaskHistory> history;
-        
-    public Task(String title, String course ,LocalDateTime dueDate, String description) {
+
+    public Task(String title, String course, LocalDateTime dueDate, String description) {
         this.title = title;
         this.dueDate = dueDate;
         this.course = course;
         this.description = description;
         this.status = TaskStatus.ASSIGNED;
         this.history = new ArrayList<>();
-        
+
         LocalDateTime deadlineTime = this.dueDate;
         long delay;
         try {
-            // Attach system time zone
             ZonedDateTime zonedDeadline = deadlineTime.atZone(ZoneId.systemDefault());
             long deadlineMillis = zonedDeadline.toInstant().toEpochMilli();
             delay = deadlineMillis - System.currentTimeMillis();
@@ -48,27 +46,36 @@ public class Task {
             JOptionPane.showMessageDialog(null, "Error with time zone: " + e.getMessage());
             return;
         }
-        
+
         if (delay > 0) {
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    String notif = "Tugas " + title + " Telah Mencapai Deadline!";
-                    SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(
-                        null,
-                        notif,
-                        "Deadline Notification",
-                        JOptionPane.INFORMATION_MESSAGE
-                    ));
+                    notifyDeadlineReached();
                 }
             }, delay);
             System.out.println("Timer set, waiting for deadline...");
         } else {
-            JOptionPane.showMessageDialog(null, "Deadline is in the past!");
+            notifyDeadlineReached();
         }
     }
 
+    private void notifyDeadlineReached() {
+        String notif = "Tugas " + title + " Telah Mencapai Deadline!";
+        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(
+                null,
+                notif,
+                "Deadline Notification",
+                JOptionPane.INFORMATION_MESSAGE));
+        if (this.status == TaskStatus.ASSIGNED) {
+            updateStatus(TaskStatus.OVERDUE);
+        }
+        MainLecturerForm m = new MainLecturerForm();
+        MainStudentForm s = new MainStudentForm();
+        m.refreshTable();
+        s.refreshTable();
+    }
 
     public String getTitle() {
         return title;
@@ -94,25 +101,29 @@ public class Task {
         this.priority = priority;
     }
 
-    public void markComplete(){
+    public void markComplete() {
         this.status = TaskStatus.SUBMITTED;
     }
 
     public TaskStatus getStatus() {
         return this.status;
     }
-    
+
     public String getStrStatus() {
         switch (status) {
-            case TaskStatus.ASSIGNED ->{
+            case TaskStatus.ASSIGNED -> {
                 return "Assigned";
-            }case TaskStatus.SUBMITTED -> {
+            }
+            case TaskStatus.SUBMITTED -> {
                 return "Submitted";
-            }case TaskStatus.OVERDUE ->{
+            }
+            case TaskStatus.OVERDUE -> {
                 return "Overdue";
-            }case TaskStatus.GRADED ->{
+            }
+            case TaskStatus.GRADED -> {
                 return "Graded";
-            }default ->{
+            }
+            default -> {
                 return null;
             }
         }
@@ -137,7 +148,7 @@ public class Task {
     public void setCourse(String course) {
         this.course = course;
     }
-    
+
     public Double getGrade() {
         return grade;
     }
@@ -154,17 +165,15 @@ public class Task {
         this.description = description;
     }
 
-    public void addHistory(TaskHistory entry){
-        if(entry !=null){
+    public void addHistory(TaskHistory entry) {
+        if (entry != null) {
             history.add(entry);
 
         }
     }
 
-    public List<TaskHistory> getHistory(){
+    public List<TaskHistory> getHistory() {
         return history;
     }
-
-    
 
 }

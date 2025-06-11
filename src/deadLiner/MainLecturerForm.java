@@ -164,6 +164,23 @@ public class MainLecturerForm extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(null,"Pilihlah tugas yang ingin di edit.");
                    return;
                 }
+                String t = tblTasks.getValueAt(selectedRow, 0).toString();
+                String c = tblTasks.getValueAt(selectedRow, 1).toString();
+                int x = UserSession.getTask(t);
+                
+                EditAssignmentForm edt = new EditAssignmentForm(x);
+                edt.addWindowListener(new java.awt.event.WindowAdapter(){
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent e){
+                        refreshTable();
+                    }
+                });
+                edt.setVisible(true);
+                
+                String desc = UserSession.taskList.get(x).getDescription();
+                edt.txtTitle.setText(t);
+                edt.txtMatkul.setText(c);
+                edt.txtDescription.setText(desc);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
